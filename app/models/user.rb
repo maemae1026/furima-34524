@@ -6,10 +6,14 @@ class User < ApplicationRecord
 
   with_options presence: true do
   validates :nickname
-  validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }
-  validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }
-  validates :family_name_reading, format: { with: /\A[ァ-ヶー－]+\z/ }
-  validates :first_name_reading, format: { with: /\A[ァ-ヶー－]+\z/ }
+  with_options format: { with: /\A[ぁ-んァ-ン一-龥々]/ } do
+  validates :family_name
+  validates :first_name
+  end
+  with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
+  validates :family_name_reading 
+  validates :first_name_reading
+  end
   validates :birth_day
   validates :password, format: { with: /\A(?=.*[0-9])(?=.*[a-z])[0-9a-z]+\z/ }
   end

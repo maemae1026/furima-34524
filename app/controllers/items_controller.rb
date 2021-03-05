@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
     def create
-      @item = Prototype.new(item_params)
+      @item = Item.new(item_params)
       if @item.save
         redirect_to root_path
       else
@@ -20,6 +20,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :text, :category_id, :states_id, :delivery_fee_id, :prefecture_id, :shipping_day_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :delivery_fee_id, :name, :text, :price, :states_id, :category_id, :prefecture_id, :shipping_day_id).merge(user_id: current_user.id)
   end
+      
+      
 end

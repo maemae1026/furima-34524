@@ -12,11 +12,13 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :text
-    validates :category_id, numericality: { other_than: 1 }
-    validates :states_id, numericality: { other_than: 1 }
-    validates :delivery_fee_id, numericality: { other_than: 1 }
-    validates :prefecture_id, numericality: { other_than: 1 }
-    validates :shipping_day_id, numericality: { other_than: 1 }
+    with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :states_id
+    validates :delivery_fee_id
+    validates :prefecture_id
+    validates :shipping_day_id
+    end
     validates :price, format: { with: /\A[0-9]+\z/ }, inclusion: { in: 300..9_999_999 }
     validates :image
   end

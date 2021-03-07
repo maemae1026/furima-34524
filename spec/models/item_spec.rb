@@ -95,15 +95,23 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is not included in the list'
       end
+      it '販売価格は半角英数字混合では登録できないこと' do
+        @item.price = '3p33'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price is not included in the list'
+      end
+      it '販売価格は半角英語では登録できないこと' do
+        @item.price = 'asdf'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price is not included in the list'
+      end
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
     context '商品が登録できるとき' do
-      it '販売価格は半角数字のみ保存可能であること' do
-        @item.price = '333'
-        @item.valid?
+      it '商品出品に必要な情報が全て正しく保存できること' do
         expect(@item).to be_valid
       end
     end

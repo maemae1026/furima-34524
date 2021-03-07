@@ -3,9 +3,9 @@ function check() {
   priceInput.addEventListener("input", () => {
     const inputValue = priceInput.value;
     const addTaxDom = document.getElementById("add-tax-price");
-    addTaxDom.innerHTML = inputValue/10 - inputValue%10/10
+    addTaxDom.innerHTML = Math.floor(inputValue/10)
     const rieki = document.getElementById("profit");
-    rieki.innerHTML = inputValue - (inputValue/10 - inputValue%10/10)
+    rieki.innerHTML = inputValue - Math.floor(inputValue/10)
 });}
 
 window.addEventListener("load", check);

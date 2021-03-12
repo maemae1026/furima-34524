@@ -10,6 +10,8 @@ class BuyerResidence
   validates :phone_number, format: {with: /\A[0-9]{,11}\z/}
   validates :item_id
   validates :user_id
+  validates :token
+  validates :price
   end
 
   def save

@@ -50,6 +50,11 @@ context '商品が購入できないとき' do
         @buyer_residence.valid?
         expect(@buyer_residence.errors.full_messages).to include "Phone number can't be blank"
   end
+  it "tokenが空では登録できないこと" do
+    @buyer_residence.token = nil
+    @buyer_residence.valid?
+    expect(@buyer_residence.errors.full_messages).to include("Token can't be blank")
+  end
 end
 end
 end

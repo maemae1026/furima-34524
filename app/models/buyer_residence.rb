@@ -1,7 +1,6 @@
 class BuyerResidence
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :item_id, :user_id, :token,
-                :price
+  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :item_id, :user_id, :token
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
@@ -12,7 +11,6 @@ class BuyerResidence
     validates :item_id
     validates :user_id
     validates :token
-    validates :price
   end
 
   def save

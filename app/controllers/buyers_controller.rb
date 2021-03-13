@@ -1,20 +1,13 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :root_path_move, only: [:index, :create]
+
   def index
     @buyer_residence = BuyerResidence.new
-    @item = Item.find(params[:item_id])
-    if user_signed_in?
-      if current_user.id == @item.user_id
-        redirect_to root_path
-      elsif @item.buyer
-        redirect_to root_path
-      end
-    else
-      redirect_to new_user_session_path
-    end
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @buyer_residence = BuyerResidence.new(buyer_params)
     if @buyer_residence.valid?
       pay_item
@@ -41,4 +34,16 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def root_path_move
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @item.buyer
+      redirect_to root_path
+  end
+end
 end

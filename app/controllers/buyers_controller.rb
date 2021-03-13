@@ -6,7 +6,7 @@ class BuyersController < ApplicationController
     if user_signed_in?
       if current_user.id == @item.user_id
         redirect_to root_path
-      elsif @item.buyer.id >= 1
+      elsif @item.buyer
         redirect_to root_path
       end
     else

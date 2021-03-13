@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.buyer.id >= 1
+    if @item.buyer
       redirect_to root_path
     end
   end

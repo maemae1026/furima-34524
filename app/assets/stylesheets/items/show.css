@@ -205,3 +205,23 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.comment-link {
+  text-decoration: none;
+  color: #3CCACE;
+}
+
+.comments-box {
+  width: 40vw;
+  background-color: #fff;
+  margin: 0 0 5vh 0;
+  overflow-wrap: anywhere;
+}
+
+.right {
+  float: right;
+}
+
+.lift {
+  float: left;
+}

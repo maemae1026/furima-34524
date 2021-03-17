@@ -80,8 +80,9 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
+  <% if user_signed_in? %>
+      <%= form_with(model: [@item, @comment], local: true) do |form| %>
+      <%= form.text_area :text, class: "comment-text"%>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
@@ -89,10 +90,32 @@
       </p>
       <button type="submit" class="comment-btn">
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span form.submit> コメントする </span>
+      </button>
+      <% end %>
+      <% else %>
+      <textarea class="comment-text" placeholder="コメントの投稿には新規登録/ログインが必要です"></textarea>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
       </button>
-    </form>
+      <strong><p>※※※ コメントの投稿には<%= link_to '新規登録', new_user_registration_path, class: "comment-link" %>/<%= link_to 'ログイン', new_user_session_path, class: "comment-link" %>が必要です ※※※</p></strong>
+    <% end %>
   </div>
+<div class="comments-box">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "#", class: :left %>：</strong>
+          <%# /users/#{comment.user_id} %>
+          <%= comment.text %>
+          <% if current_user.id == @item.user_id %>
+          <%= link_to "削除", comment_path(comment.id), method: :delete, class: :right%>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品

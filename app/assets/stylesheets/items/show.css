@@ -222,6 +222,20 @@
   float: right;
 }
 
-.lift {
-  float: left;
+.comment-center {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2vh 0;
+  font-weight: bold;
+}
+
+.comment-margin {
+  margin: 0 0 2vh 0;
+}
+
+.small-right {
+  float: right;
+  font-size: 80%;
+  margin: 0.5vh 0 0 0;
+  padding-right: 2%;
 }

@@ -103,15 +103,29 @@
     <% end %>
   </div>
 <div class="comments-box">
-      <h4>＜コメント一覧＞</h4>
+      <div class="comment-center">＜コメント一覧＞</div>
       <% @comments.each do |comment| %>
-        <p>
-          <strong><%= link_to comment.user.nickname, "#", class: :left %>：</strong>
+        <p class="comment-margin">
+          <strong><%= link_to comment.user.nickname, "#"%>：</strong>
           <%# /users/#{comment.user_id} %>
-          <%= comment.text %>
-          <% if current_user.id == @item.user_id %>
+          <%=safe_join(comment.text.split("\n"),tag(:br))%>
+          
+          <% if user_signed_in? && current_user.id == @item.user_id %>
           <%= link_to "削除", comment_path(comment.id), method: :delete, class: :right%>
           <% end %>
+          <a class="small-right">
+          <% if (Time.now - comment.created_at) <= 60%>
+          (<%= (Time.now - comment.created_at).round %>秒前に投稿)
+          <% elsif  (Time.now - comment.created_at) > 60   && (Time.now - comment.created_at) <= 3600 %>
+          (<%= ((Time.now - comment.created_at)/60).round %>分前に投稿)
+          <% elsif  (Time.now - comment.created_at) > 3600   && (Time.now - comment.created_at) <= 86400 %>
+          (<%= ((Time.now - comment.created_at)/3600).round %>時間前に投稿)
+          <% elsif  (Time.now - comment.created_at) > 86400   && (Time.now - comment.created_at) <= 172800 %>
+          (<%= ((Time.now - comment.created_at)/86400).round %>日前に投稿)
+          <% else %>
+          (<%= l comment.created_at, format: :short%>投稿)
+          <% end %>
+          </a>
         </p>
       <% end %>
     </div>

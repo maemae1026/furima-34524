@@ -30,7 +30,7 @@ RSpec.describe BuyerResidence, type: :model do
         expect(@buyer_residence.errors.full_messages).to include 'Phone number is invalid'
       end
       it '電話番号が12桁以上のときは登録できないこと' do
-        @buyer_residence.phone_number = 123456789012
+        @buyer_residence.phone_number = 123_456_789_012
         @buyer_residence.valid?
         expect(@buyer_residence.errors.full_messages).to include 'Phone number is invalid'
       end
@@ -74,10 +74,10 @@ RSpec.describe BuyerResidence, type: :model do
         @buyer_residence.valid?
         expect(@buyer_residence.errors.full_messages).to include "Item can't be blank"
       end
-        it 'user_idが空のとき登録できないこと' do
-          @buyer_residence.user_id = ''
-          @buyer_residence.valid?
-          expect(@buyer_residence.errors.full_messages).to include "User can't be blank"
+      it 'user_idが空のとき登録できないこと' do
+        @buyer_residence.user_id = ''
+        @buyer_residence.valid?
+        expect(@buyer_residence.errors.full_messages).to include "User can't be blank"
       end
     end
   end

@@ -106,10 +106,12 @@
       <div class="comment-center">＜コメント一覧＞</div>
       <% @comments.each do |comment| %>
         <p class="comment-margin">
-          <strong><%= link_to comment.user.nickname, "#"%>：</strong>
+          <div class="comment-names"><%= link_to comment.user.nickname, "#"%>：</div>
           <%# /users/#{comment.user_id} %>
           <%=safe_join(comment.text.split("\n"),tag(:br))%>
-          
+
+          <div class="comment-destroy">
+
           <% if user_signed_in? && current_user.id == @item.user_id %>
           <%= link_to "削除", comment_path(comment.id), method: :delete, class: :right%>
           <% end %>
@@ -126,6 +128,7 @@
           (<%= l comment.created_at, format: :short%>投稿)
           <% end %>
           </a>
+        </div>
         </p>
       <% end %>
     </div>

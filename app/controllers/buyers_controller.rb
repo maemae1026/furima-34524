@@ -40,8 +40,6 @@ class BuyersController < ApplicationController
   end
 
   def root_path_move
-    if (current_user.id == @item.user_id) || @item.buyer
-      redirect_to root_path
+    redirect_to root_path if (current_user.id == @item.user_id) || @item.buyer
   end
-end
 end

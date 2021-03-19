@@ -15,17 +15,17 @@ RSpec.describe Comment, type: :model do
       it 'コメントの保存はテキストが空では保存できないこと' do
         @comment.text = ''
         @comment.valid?
-        expect(@comment.errors.full_messages).to include 'Comment is invalid'
+        expect(@comment.errors.full_messages).to include 'Textを入力してください'
       end
       it 'userが紐付いていないと保存できないこと' do
         @comment.user = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include('User must exist')
+        expect(@comment.errors.full_messages).to include 'Userを入力してください'
       end
       it 'itemが紐付いていないと保存できないこと' do
         @comment.item = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include('Item translation missing: ja.activerecord.errors.models.comment.attributes.item.required')
+        expect(@comment.errors.full_messages).to include 'Itemを入力してください'
       end
     end
   end

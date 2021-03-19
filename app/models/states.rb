@@ -1,12 +1,12 @@
 class States < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
-    { id: 2, name: 'S' },
-    { id: 3, name: 'A' },
-    { id: 4, name: 'B' },
-    { id: 5, name: 'C' },
-    { id: 6, name: 'D' },
-    { id: 7, name: 'E' }
+    { id: 2, name: '新品・未使用' },
+    { id: 3, name: '未使用に近い' },
+    { id: 4, name: '目立った傷や汚れなし' },
+    { id: 5, name: 'やや傷や汚れあり' },
+    { id: 6, name: '傷や汚れあり' },
+    { id: 7, name: '全体的に状態が悪い' }
   ]
 
   include ActiveHash::Associations

@@ -1,10 +1,32 @@
 ja:
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
-      short: "%Y/%m/%d %H:%M"
-      
-      ja:
+  activemodel:
+    attributes:
+      buyer_residence:
+        postal_code: 郵便番号
+        phone_number: 電話番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        house_number: 番地
+        token: クレジットカート情報
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        family_name: 苗字
+        first_name: 名前
+        family_name_reading: 苗字カナ
+        first_name_reading: 名前カナ
+        birth_day: 生年月日
+      item:
+        name: 商品名
+        text: 商品の説明
+        price: 価格
+        image: 画像
+        category_id: カテゴリー
+        states_id: 商品の状態
+        delivery_fee_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        shipping_day_id: 発送までの日数
   date:
     formats:
       default: "%Y/%m/%d"
@@ -29,3 +51,4 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+    

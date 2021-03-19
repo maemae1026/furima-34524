@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
         @user.password = ''
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "パスワードを入力してください"
+        expect(@user.errors.full_messages).to include 'パスワードを入力してください'
       end
       it 'パスワードは5文字以下での入力ができないこと' do
         @user.password = '0oiuy'
@@ -42,13 +42,13 @@ RSpec.describe User, type: :model do
         @user.password = '000000d'
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "パスワード（確認用）とパスワードの入力が一致しません"
+        expect(@user.errors.full_messages).to include 'パスワード（確認用）とパスワードの入力が一致しません'
       end
       it 'パスワードとパスワード（確認用）は、値の一致が必要であること' do
         @user.password = '000000d'
         @user.password_confirmation = '0o0o0sss'
         @user.valid?
-        expect(@user.errors.full_messages).to include "パスワード（確認用）とパスワードの入力が一致しません"
+        expect(@user.errors.full_messages).to include 'パスワード（確認用）とパスワードの入力が一致しません'
       end
     end
 
@@ -85,12 +85,12 @@ RSpec.describe User, type: :model do
       it 'nicknameが空だと登録できない' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "ニックネームを入力してください"
+        expect(@user.errors.full_messages).to include 'ニックネームを入力してください'
       end
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "Eメールを入力してください"
+        expect(@user.errors.full_messages).to include 'Eメールを入力してください'
       end
 
       it 'メールアドレスが一意性であること' do
@@ -98,7 +98,7 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include "Eメールはすでに存在します"
+        expect(another_user.errors.full_messages).to include 'Eメールはすでに存在します'
       end
       it 'メールアドレスは、＠を含む必要があること' do
         @user.email = 'ppppppp'
@@ -109,28 +109,28 @@ RSpec.describe User, type: :model do
       it 'ユーザー本名は、名字が必須であること' do
         @user.family_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "苗字を入力してください"
+        expect(@user.errors.full_messages).to include '苗字を入力してください'
       end
       it 'ユーザー本名は、名前が必須であること' do
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "名前を入力してください"
+        expect(@user.errors.full_messages).to include '名前を入力してください'
       end
       it 'ユーザー本名のフリガナは、名字が必須であること' do
         @user.family_name_reading = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "苗字カナを入力してください"
+        expect(@user.errors.full_messages).to include '苗字カナを入力してください'
       end
       it 'ユーザー本名のフリガナは、名前が必須であること' do
         @user.first_name_reading = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "名前カナを入力してください"
+        expect(@user.errors.full_messages).to include '名前カナを入力してください'
       end
 
       it '生年月日が必須であること' do
         @user.birth_day = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include "生年月日を入力してください"
+        expect(@user.errors.full_messages).to include '生年月日を入力してください'
       end
     end
   end

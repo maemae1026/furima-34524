@@ -37,32 +37,32 @@ RSpec.describe BuyerResidence, type: :model do
       it '購入には郵便番号が必要であること' do
         @buyer_residence.postal_code = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "郵便番号を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include '郵便番号を入力してください'
       end
       it '購入には都道府県が必要であること' do
         @buyer_residence.prefecture_id = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "都道府県を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include '都道府県を入力してください'
       end
       it '購入には市区町村が必要であること' do
         @buyer_residence.city = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "市区町村を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include '市区町村を入力してください'
       end
       it '購入には番地が必要であること' do
         @buyer_residence.house_number = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "番地を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include '番地を入力してください'
       end
       it '購入には電話番号が必要であること' do
         @buyer_residence.phone_number = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "電話番号を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include '電話番号を入力してください'
       end
       it 'tokenが空では登録できないこと' do
         @buyer_residence.token = nil
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "クレジットカート情報を入力してください"
+        expect(@buyer_residence.errors.full_messages).to include 'クレジットカート情報を入力してください'
       end
       it '都道府県が１のとき登録できないこと' do
         @buyer_residence.prefecture_id = 1
@@ -72,12 +72,12 @@ RSpec.describe BuyerResidence, type: :model do
       it 'item_idが空のとき登録できないこと' do
         @buyer_residence.item_id = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "Itemを入力してください"
+        expect(@buyer_residence.errors.full_messages).to include 'Itemを入力してください'
       end
       it 'user_idが空のとき登録できないこと' do
         @buyer_residence.user_id = ''
         @buyer_residence.valid?
-        expect(@buyer_residence.errors.full_messages).to include "Userを入力してください"
+        expect(@buyer_residence.errors.full_messages).to include 'Userを入力してください'
       end
     end
   end

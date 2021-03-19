@@ -10,42 +10,42 @@ RSpec.describe Item, type: :model do
       it '商品画像がないと登録できないこと' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "画像を入力してください"
+        expect(@item.errors.full_messages).to include '画像を入力してください'
       end
       it '商品名がないと登録できないこと' do
         @item.name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品名を入力してください"
+        expect(@item.errors.full_messages).to include '商品名を入力してください'
       end
       it '商品説明がないと登録できないこと' do
         @item.text = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品の説明を入力してください"
+        expect(@item.errors.full_messages).to include '商品の説明を入力してください'
       end
       it 'カテゴリーがないと登録できないこと' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "カテゴリーを入力してください"
+        expect(@item.errors.full_messages).to include 'カテゴリーを入力してください'
       end
       it '商品状態がないと登録できないこと' do
         @item.states_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "商品の状態を入力してください"
+        expect(@item.errors.full_messages).to include '商品の状態を入力してください'
       end
       it '配送料負担がないと登録できないこと' do
         @item.delivery_fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "配送料の負担を入力してください"
+        expect(@item.errors.full_messages).to include '配送料の負担を入力してください'
       end
       it '発送元地域がないと登録できないこと' do
         @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "発送元の地域を入力してください"
+        expect(@item.errors.full_messages).to include '発送元の地域を入力してください'
       end
       it '発送までの日数がないと登録できないこと' do
         @item.shipping_day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "発送までの日数を入力してください"
+        expect(@item.errors.full_messages).to include '発送までの日数を入力してください'
       end
 
       it 'カテゴリーが１のとき登録できないこと' do
@@ -77,7 +77,7 @@ RSpec.describe Item, type: :model do
       it '販売価格がないと登録できないこと' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "価格を入力してください"
+        expect(@item.errors.full_messages).to include '価格を入力してください'
       end
       it '販売価格は300以下では登録できないこと' do
         @item.price = 299

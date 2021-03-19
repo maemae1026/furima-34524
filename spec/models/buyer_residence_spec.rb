@@ -22,6 +22,7 @@ RSpec.describe BuyerResidence, type: :model do
       it '郵便番号の保存にはハイフンが必要であること' do
         @buyer_residence.postal_code = 1_234_567
         @buyer_residence.valid?
+        binding.pry
         expect(@buyer_residence.errors.full_messages).to include 'Postal code is invalid'
       end
       it '電話番号は11桁以内の数値のみ保存可能であること' do

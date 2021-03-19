@@ -1,10 +1,15 @@
 ja:
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
-      short: "%Y/%m/%d %H:%M"
-      
-      ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        nickname: ニックネーム
+        family_name: 苗字
+        first_name: 名前
+        family_name_reading: 苗字カナ
+        first_name_reading: 名前カナ
+        birth_day: 生年月日
   date:
     formats:
       default: "%Y/%m/%d"
@@ -29,3 +34,4 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+    
